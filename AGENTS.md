@@ -29,6 +29,14 @@ Build a Spring Boot 2.7.x user management system for learning the Codex workflow
 - Controllers must not contain business logic.
 - All API responses must use `Result<T>`.
 
+## Data Safety Rules
+
+- User deletion must use logical delete by default.
+- Do not use physical delete for business entities unless the user explicitly asks for it.
+- For MyBatis-Plus entities, use `@TableLogic` and a `deleted` column.
+- Before implementing any delete behavior, state whether it is logical delete or physical delete.
+- Integration tests must verify that delete APIs hide records from normal queries while preserving rows in the database.
+
 ## Workflow
 
 1. Explain the step before making changes.
