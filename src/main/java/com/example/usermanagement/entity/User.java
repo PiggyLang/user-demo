@@ -8,6 +8,11 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * User entity.
+ *
+ * @author liulang
+ */
 @Data
 @TableName("users")
 public class User {

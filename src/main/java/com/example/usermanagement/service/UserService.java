@@ -6,6 +6,11 @@ import com.example.usermanagement.dto.UserQueryRequest;
 import com.example.usermanagement.dto.UserUpdateRequest;
 import com.example.usermanagement.entity.User;
 
+/**
+ * User business service.
+ *
+ * @author liulang
+ */
 public interface UserService {
 
     User createUser(UserCreateRequest request);

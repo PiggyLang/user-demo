@@ -4,6 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Unified API response wrapper.
+ *
+ * @author liulang
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

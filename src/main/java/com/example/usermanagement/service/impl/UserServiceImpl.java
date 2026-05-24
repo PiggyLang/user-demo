@@ -15,6 +15,11 @@ import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 
+/**
+ * User business service implementation.
+ *
+ * @author liulang
+ */
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {

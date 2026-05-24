@@ -2,6 +2,11 @@ package com.example.usermanagement.dto;
 
 import lombok.Data;
 
+/**
+ * User creation request.
+ *
+ * @author liulang
+ */
 @Data
 public class UserCreateRequest {
 

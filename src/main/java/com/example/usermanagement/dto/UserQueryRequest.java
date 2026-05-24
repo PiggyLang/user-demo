@@ -4,6 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * User page query request.
+ *
+ * @author liulang
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
