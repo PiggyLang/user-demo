@@ -29,6 +29,12 @@ Build a Spring Boot 2.7.x user management system for learning the Codex workflow
 - Controllers must not contain business logic.
 - All API responses must use `Result<T>`.
 
+## Java File Header Rules
+
+- Every Java type must have a class-level Javadoc before annotations.
+- The Javadoc must include a short responsibility description and `@author liulang`.
+- Do not add `@date` or `@since` unless the user explicitly asks.
+
 ## Data Safety Rules
 
 - User deletion must use logical delete by default.
