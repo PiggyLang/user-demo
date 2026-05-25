@@ -14,6 +14,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MybatisPlusConfig {
 
+    /**
+     * Creates the MyBatis-Plus interceptor with MySQL pagination support.
+     *
+     * @return MyBatis-Plus interceptor
+     */
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();

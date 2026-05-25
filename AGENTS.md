@@ -28,6 +28,9 @@ Build a Spring Boot 2.7.x user management system for learning the Codex workflow
 - Do not use field injection.
 - Controllers must not contain business logic.
 - All API responses must use `Result<T>`.
+- All abstract methods, including interface methods, must have method-level Javadoc.
+- Method-level Javadoc must describe what the method does and include `@param`, `@return`, and `@throws` when applicable.
+- Public methods generated in this demo should include method-level Javadoc unless the user explicitly asks otherwise.
 
 ## Java File Header Rules
 

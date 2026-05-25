@@ -26,6 +26,12 @@ public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
 
+    /**
+     * Creates a user from the request data.
+     *
+     * @param request user creation request
+     * @return created user
+     */
     @Override
     public User createUser(UserCreateRequest request) {
         User user = new User();
@@ -40,11 +46,24 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * Gets a user by user id.
+     *
+     * @param id user id
+     * @return matched user, or null if not found
+     */
     @Override
     public User getUserById(Long id) {
         return userMapper.selectById(id);
     }
 
+    /**
+     * Updates a user by user id with the request data.
+     *
+     * @param id user id
+     * @param request user update request
+     * @return updated user, or null if not found
+     */
     @Override
     public User updateUser(Long id, UserUpdateRequest request) {
         User user = userMapper.selectById(id);
@@ -60,11 +79,22 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * Logically deletes a user by user id.
+     *
+     * @param id user id
+     */
     @Override
     public void deleteUser(Long id) {
         userMapper.deleteById(id);
     }
 
+    /**
+     * Queries users by page with optional username fuzzy search and status filter.
+     *
+     * @param request user page query request
+     * @return user page result
+     */
     @Override
     public IPage<User> pageUsers(UserQueryRequest request) {
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>()

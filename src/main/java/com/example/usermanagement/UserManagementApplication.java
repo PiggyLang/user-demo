@@ -13,6 +13,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class UserManagementApplication {
 
+    /**
+     * Starts the user management application.
+     *
+     * @param args application startup arguments
+     */
     public static void main(String[] args) {
         SpringApplication.run(UserManagementApplication.class, args);
     }

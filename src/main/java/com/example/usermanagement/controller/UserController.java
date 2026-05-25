@@ -30,27 +30,61 @@ public class UserController {
 
     private final UserService userService;
 
+    /**
+     * Creates a user from request body data.
+     *
+     * @param request user creation request
+     * @return created user response
+     */
     @PostMapping
     public Result<User> create(@RequestBody UserCreateRequest request) {
         return Result.success(userService.createUser(request));
     }
 
+    /**
+     * Gets a user by user id.
+     *
+     * @param id user id
+     * @return matched user response
+     */
     @GetMapping("/{id}")
     public Result<User> getById(@PathVariable Long id) {
         return Result.success(userService.getUserById(id));
     }
 
+    /**
+     * Updates a user by user id with request body data.
+     *
+     * @param id user id
+     * @param request user update request
+     * @return updated user response
+     */
     @PutMapping("/{id}")
     public Result<User> update(@PathVariable Long id, @RequestBody UserUpdateRequest request) {
         return Result.success(userService.updateUser(id, request));
     }
 
+    /**
+     * Logically deletes a user by user id.
+     *
+     * @param id user id
+     * @return successful response without data
+     */
     @DeleteMapping("/{id}")
     public Result<Void> delete(@PathVariable Long id) {
         userService.deleteUser(id);
         return Result.success();
     }
 
+    /**
+     * Queries users by page with optional username fuzzy search and status filter.
+     *
+     * @param current current page number
+     * @param size page size
+     * @param username username fuzzy search keyword
+     * @param status exact user status filter
+     * @return user page response
+     */
     @GetMapping
     public Result<IPage<User>> page(
             @RequestParam(defaultValue = "1") long current,
