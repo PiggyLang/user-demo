@@ -3,8 +3,9 @@ package com.example.usermanagement.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.usermanagement.dto.UserCreateRequest;
 import com.example.usermanagement.dto.UserQueryRequest;
+import com.example.usermanagement.dto.UserResponse;
 import com.example.usermanagement.dto.UserUpdateRequest;
-import com.example.usermanagement.entity.User;
+import com.example.usermanagement.exception.BusinessException;
 
 /**
  * User business service.
@@ -17,31 +18,34 @@ public interface UserService {
      * Creates a user from the request data.
      *
      * @param request user creation request
-     * @return created user
+     * @return created user response
      */
-    User createUser(UserCreateRequest request);
+    UserResponse createUser(UserCreateRequest request);
 
     /**
      * Gets a user by user id.
      *
      * @param id user id
-     * @return matched user, or null if not found
+     * @return matched user response
+     * @throws BusinessException if user does not exist
      */
-    User getUserById(Long id);
+    UserResponse getUserById(Long id);
 
     /**
      * Updates a user by user id with the request data.
      *
      * @param id user id
      * @param request user update request
-     * @return updated user, or null if not found
+     * @return updated user response
+     * @throws BusinessException if user does not exist
      */
-    User updateUser(Long id, UserUpdateRequest request);
+    UserResponse updateUser(Long id, UserUpdateRequest request);
 
     /**
      * Logically deletes a user by user id.
      *
      * @param id user id
+     * @throws BusinessException if user does not exist
      */
     void deleteUser(Long id);
 
@@ -51,5 +55,5 @@ public interface UserService {
      * @param request user page query request
      * @return user page result
      */
-    IPage<User> pageUsers(UserQueryRequest request);
+    IPage<UserResponse> pageUsers(UserQueryRequest request);
 }
