@@ -19,6 +19,7 @@ import javax.validation.constraints.Size;
 public class UserQueryRequest {
 
     @Min(value = 1, message = "current must be greater than or equal to 1")
+    @Max(value = 1000, message = "current must be less than or equal to 1000")
     private long current = 1;
 
     @Min(value = 1, message = "size must be greater than or equal to 1")
