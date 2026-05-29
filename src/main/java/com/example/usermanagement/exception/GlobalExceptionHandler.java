@@ -1,6 +1,7 @@
 package com.example.usermanagement.exception;
 
 import com.example.usermanagement.common.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,6 +16,7 @@ import javax.validation.ConstraintViolationException;
  *
  * @author liulang
  */
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -26,6 +28,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BusinessException.class)
     public Result<Void> handleBusinessException(BusinessException exception) {
+        log.warn("Business exception: code={}, message={}", exception.getCode(), exception.getMessage());
         return Result.failure(exception.getCode(), exception.getMessage());
     }
 
@@ -78,6 +81,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public Result<Void> handleException(Exception exception) {
+        log.error("Unexpected exception", exception);
         return Result.failure(500, "internal server error");
     }
 }
