@@ -17,13 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 
 /**
  * User API controller.
@@ -94,25 +91,11 @@ public class UserController {
     /**
      * Queries users by page with optional username fuzzy search and status filter.
      *
-     * @param current current page number
-     * @param size page size
-     * @param username username fuzzy search keyword
-     * @param status exact user status filter
+     * @param request user page query request
      * @return user page response
      */
     @GetMapping
-    public Result<IPage<UserResponse>> page(
-            @Min(value = 1, message = "current must be greater than or equal to 1")
-            @RequestParam(defaultValue = "1") long current,
-            @Min(value = 1, message = "size must be greater than or equal to 1")
-            @Max(value = 100, message = "size must be less than or equal to 100")
-            @RequestParam(defaultValue = "10") long size,
-            @Size(max = 64, message = "username length must be less than or equal to 64")
-            @RequestParam(required = false) String username,
-            @Min(value = 0, message = "status must be 0 or 1")
-            @Max(value = 1, message = "status must be 0 or 1")
-            @RequestParam(required = false) Integer status) {
-        UserQueryRequest request = new UserQueryRequest(current, size, username, status);
+    public Result<IPage<UserResponse>> page(@Valid UserQueryRequest request) {
         return Result.success(userService.pageUsers(request));
     }
 }
