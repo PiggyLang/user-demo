@@ -3,6 +3,7 @@ package com.example.usermanagement.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.usermanagement.common.PageResponse;
 import com.example.usermanagement.dto.UserCreateRequest;
 import com.example.usermanagement.dto.UserQueryRequest;
 import com.example.usermanagement.dto.UserResponse;
@@ -96,13 +97,14 @@ public class UserServiceImpl implements UserService {
      * @return user page result
      */
     @Override
-    public IPage<UserResponse> pageUsers(UserQueryRequest request) {
+    public PageResponse<UserResponse> pageUsers(UserQueryRequest request) {
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>()
                 .like(StringUtils.hasText(request.getUsername()), User::getUsername, request.getUsername())
                 .eq(request.getStatus() != null, User::getStatus, request.getStatus())
                 .orderByDesc(User::getId);
-        return userMapper.selectPage(new Page<User>(request.getCurrent(), request.getSize()), wrapper)
+        IPage<UserResponse> page = userMapper.selectPage(new Page<User>(request.getCurrent(), request.getSize()), wrapper)
                 .convert(UserResponse::from);
+        return PageResponse.from(page);
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.example.usermanagement.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.example.usermanagement.common.PageResponse;
 import com.example.usermanagement.common.Result;
 import com.example.usermanagement.dto.UserCreateRequest;
 import com.example.usermanagement.dto.UserQueryRequest;
@@ -95,7 +95,7 @@ public class UserController {
      * @return user page response
      */
     @GetMapping
-    public Result<IPage<UserResponse>> page(@Valid UserQueryRequest request) {
+    public Result<PageResponse<UserResponse>> page(@Valid UserQueryRequest request) {
         return Result.success(userService.pageUsers(request));
     }
 }

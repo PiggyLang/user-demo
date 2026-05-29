@@ -1,6 +1,6 @@
 package com.example.usermanagement.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.example.usermanagement.common.PageResponse;
 import com.example.usermanagement.dto.UserCreateRequest;
 import com.example.usermanagement.dto.UserQueryRequest;
 import com.example.usermanagement.dto.UserResponse;
@@ -55,5 +55,5 @@ public interface UserService {
      * @param request user page query request
      * @return user page result
      */
-    IPage<UserResponse> pageUsers(UserQueryRequest request);
+    PageResponse<UserResponse> pageUsers(UserQueryRequest request);
 }
